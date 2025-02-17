@@ -2,7 +2,9 @@ const dataSource = require('../models')
 
 module.exports = class ProductService {
     static async getAllProducts () {
-        return await dataSource.Product.findAll()
+        return await dataSource.Product.findAll({
+            include: dataSource.Price
+        })
     }
 
     static async getOneProduct (id) {
